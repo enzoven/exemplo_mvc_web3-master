@@ -6,6 +6,7 @@ $uri_parse = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 //echo "<hr />";
 
 include 'Controller/PessoaController.php';
+include 'Controller/ProdutoController.php';
 
 switch($uri_parse)
 {

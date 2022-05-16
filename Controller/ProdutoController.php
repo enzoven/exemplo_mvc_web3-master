@@ -9,7 +9,7 @@ class ProdutoController
         
         $model = new ProdutoModel(); 
         $model->getAllRows();
-        include 'View/modules/Produto/ListaProdutos.php'; 
+        include 'View/modules/Produto/ProdutoListar.php'; 
     }
 
     public static function form()
@@ -21,7 +21,7 @@ class ProdutoController
             $model = $model->getById( (int) $_GET['id']); 
             
 
-        include 'View/modules/Produto/FormProduto.php'; 
+        include 'View/modules/Produto/ProdutoCadastro.php'; 
     }
 
     public static function save()
