@@ -33,8 +33,8 @@ class ProdutoController
 
        $model->id =  $_POST['id'];
        $model->nome = $_POST['nome'];
-       $model->cpf = $_POST['cpf'];
-       $model->data_nascimento = $_POST['data_nascimento'];
+       $model->cpf = $_POST['marca'];
+       $model->data_nascimento = $_POST['valor'];
 
        $model->save(); 
 

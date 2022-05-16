@@ -16,25 +16,25 @@ class ProdutoDAO
     public function insert(ProdutoModel $model)
     {
         
-        $sql = "INSERT INTO produto (nome, cpf, data_nascimento) VALUES (?, ?, ?) ";
+        $sql = "INSERT INTO produto (nome, marca, valor) VALUES (?, ?, ?) ";
 
         $stmt = $this->conexao->prepare($sql);
 
         $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->cpf);
-        $stmt->bindValue(3, $model->data_nascimento);
+        $stmt->bindValue(2, $model->marca);
+        $stmt->bindValue(3, $model->valor);
 
         $stmt->execute();
     }
 
     public function update(ProdutoModel $model)
     {
-        $sql = "UPDATE produto SET nome=?, cpf=?, data_nascimento=? WHERE id=? ";
+        $sql = "UPDATE produto SET nome=?, marca=?, valor=? WHERE id=? ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->cpf);
-        $stmt->bindValue(3, $model->data_nascimento);
+        $stmt->bindValue(2, $model->marca);
+        $stmt->bindValue(3, $model->valor);
         $stmt->bindValue(4, $model->id);
         $stmt->execute();
     }
