@@ -25,12 +25,6 @@ switch($uri_parse)
         PessoaController::save();
     break;
     
-    
-    
-    case '/formulario':
-        include 'View/udy.php';
-    break;
-
     case '/processa':
         echo "vai pegar o que o usuário digitou <br />";
         echo $_POST['nome'];
@@ -39,19 +33,19 @@ switch($uri_parse)
     break;
 
     case '/produto':
-        echo "listar produtos";
+        ProdutoController::index();
     break;
 
-    case '/produto/ver':
-        echo "ver detalhes de produto";
+    case '/produto/form':
+        ProdutoController::form();
     break;
 
     case '/produto/delete':
-        echo "remover produto";
+        ProdutoController::delete();
     break;
 
-    case '/produto/salvar':
-        echo "salva no banco de dados";
+    case '/produto/save':
+        ProdutoController::save();
     break;
 
     default:
