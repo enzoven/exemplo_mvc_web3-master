@@ -1,6 +1,6 @@
 <?php
 
-class PessoaDAO
+class ProdutoCategoriaDAO
 {
     private $conexao;
 
@@ -12,38 +12,33 @@ class PessoaDAO
         $this->conexao = new PDO($dsn, 'root', 'etecjau');
     }
 
-    public function insert(PessoaModel $model)
+    public function insert(ProdutoCategoriaModel $model)
     {
-           $sql = "INSERT INTO pessoa (nome, cpf, data_nascimento) VALUES (?, ?, ?) ";
+           $sql = "INSERT INTO produto_categoria (descricao) VALUES (?) ";
 
   $stmt = $this->conexao->prepare($sql);
 
 
-        $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->cpf);
-        $stmt->bindValue(3, $model->data_nascimento);
-
+        $stmt->bindValue(1, $model->descricao);
         $stmt->execute();
     }
 
 
   
-    public function update(PessoaModel $model)
+    public function update(ProdutoCategoriaModel $model)
     {
-        $sql = "UPDATE pessoa SET nome=?, cpf=?, data_nascimento=? WHERE id=? ";
+        $sql = "UPDATE produto_categoria SET  descricao=? WHERE id=? ";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->cpf);
-        $stmt->bindValue(3, $model->data_nascimento);
-        $stmt->bindValue(4, $model->id);
+        $stmt->bindValue(1, $model->descricao);
+        $stmt->bindValue(2, $model->id);
         $stmt->execute();
     }
 
 
     public function select()
     {
-        $sql = "SELECT * FROM pessoa ";
+        $sql = "SELECT * FROM produto_categoria ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -55,22 +50,22 @@ class PessoaDAO
    
     public function selectById(int $id)
     {
-        include_once 'Model/PessoaModel.php';
+        include_once 'Model/ProdutoCategoriaModel.php';
 
-        $sql = "SELECT * FROM pessoa WHERE id = ?";
+        $sql = "SELECT * FROM produto_categoria WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
-        return $stmt->fetchObject("PessoaModel"); 
+        return $stmt->fetchObject("ProdutoCategoriaModel"); 
     }
 
 
    
     public function delete(int $id)
     {
-        $sql = "DELETE FROM pessoa WHERE id = ? ";
+        $sql = "DELETE FROM produto_categoria WHERE id = ? ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);

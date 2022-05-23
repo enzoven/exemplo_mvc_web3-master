@@ -1,20 +1,15 @@
-
 <?php
 
-class PessoaModel
+class ProdutoCategoriaModel
 {
-   
-    public $id, $nome, $cpf, $data_nascimento;
-
-
+    public $id, $descricao;
     public $rows;
-
 
     public function save()
     {
-        include 'DAO/PessoaDAO.php';
+        include 'DAO/ProdutoCategoriaDAO.php';
 
-        $dao = new PessoaDAO(); 
+        $dao = new ProdutoCategoriaDAO(); 
 
         if(empty($this->id))
         {
@@ -30,8 +25,8 @@ class PessoaModel
    
     public function getAllRows()
     {
-        include 'DAO/PessoaDAO.php'; 
-          $dao = new PessoaDAO();
+        include 'DAO/ProdutoCategoriaDAO.php'; 
+          $dao = new ProdutoCategoriaDAO();
 
         $this->rows = $dao->select();
     }
@@ -40,13 +35,13 @@ class PessoaModel
    
     public function getById(int $id)
     {
-        include 'DAO/PessoaDAO.php';
+        include 'DAO/ProdutoCategoriaDAO.php';
 
-        $dao = new PessoaDAO();
+        $dao = new ProdutoCategoriaDAO();
 
         $obj = $dao->selectById($id);
 
-         return ($obj) ? $obj : new PessoaModel(); 
+         return ($obj) ? $obj : new ProdutoCategoriaModel(); 
 
     }
 
@@ -54,9 +49,9 @@ class PessoaModel
    
     public function delete(int $id)
     {
-        include 'DAO/PessoaDAO.php'; 
+        include 'DAO/ProdutoCategoriaDAO.php'; 
 
-        $dao = new PessoaDAO();
+        $dao = new ProdutoCategoriaDAO();
 
         $dao->delete($id);
     }

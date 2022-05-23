@@ -1,16 +1,19 @@
 <?php
 
-$uri_parse = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
-//echo $uri_parse;
-//echo "<hr />";
-
 include 'Controller/PessoaController.php';
 include 'Controller/ProdutoController.php';
+include 'Controller/ProdutoCategoriaController.php';
 
-switch($uri_parse)
+$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+switch($url)
 {
+    case '/':
+        echo "página inicial";
+    break;
+
     case '/pessoa':
+
         PessoaController::index();
     break;
 
@@ -18,22 +21,16 @@ switch($uri_parse)
         PessoaController::form();
     break;
 
+    case '/pessoa/form/save':
+        PessoaController::save();
+    break;
+
     case '/pessoa/delete':
         PessoaController::delete();
     break;
 
-    case '/pessoa/save':
-        PessoaController::save();
-    break;
-    
-    case '/processa':
-        echo "vai pegar o que o usuário digitou <br />";
-        echo $_POST['nome'];
-        echo "<br />";
-        var_dump($_POST);
-    break;
-
     case '/produto':
+        
         ProdutoController::index();
     break;
 
@@ -41,15 +38,32 @@ switch($uri_parse)
         ProdutoController::form();
     break;
 
+    case '/produto/form/save':
+        ProdutoController::save();
+    break;
+
     case '/produto/delete':
         ProdutoController::delete();
     break;
 
-    case '/produto/save':
-        ProdutoController::save();
+    case '/produtocategoria':
+        
+        ProdutoCategoriaController::index();
+    break;
+
+    case '/produtocategoria/form':
+        ProdutoCategoriaController::form();
+    break;
+
+    case '/produtocategoria/form/save':
+        ProdutoCategoriaController::save();
+    break;
+
+    case '/produtocategoria/delete':
+        ProdutoCategoriaController::delete();
     break;
 
     default:
-        echo "Página Inicial";
+        echo "Erro 404";
     break;
 }

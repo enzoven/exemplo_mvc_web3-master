@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Produtos</title>
+    <title>Lista de Categoria de Produtos</title>
 </head>
 <body>
 
@@ -12,25 +12,21 @@
         <tr>
             <th></th>
             <th>Id</th>
-            <th>Nome</th>
-            <th>Marca</th>
-            <th>Valor</th>
+            <th>Descricao</th>
         </tr>
 
         <?php foreach($model->rows as $item): ?>
         <tr>
             <td>
-                <a href="/produto/delete?id=<?= $item->id ?>">X</a>
+                <a href="/produtocategoria/delete?id=<?= $item->id ?>">X</a>
             </td>
 
             <td><?= $item->id ?></td>
 
             <td>
-                <a href="/produto/form?id=<?= $item->id ?>"><?= $item->nome ?></a>
+                <a href="/produtocategoria/form?id=<?= $item->id ?>"><?= $item->descricao?></a>
             </td>
 
-            <td><?= $item->marca ?></td>
-            <td><?= $item->valor ?></td>
         </tr>
         <?php endforeach ?>
 
